@@ -4,52 +4,21 @@ syms x;
 
 steps = 10;
 
-f1(x) = 2*x;
-f2(x) = 2*x-1;
+epsilon = 7;
+
+f1(x) = (2+epsilon)*x;
+f2(x) = ((2+epsilon)*x-1)/(1+epsilon);
 
 F = {f1, f2};
-degree = size(F,2);
 
-G = {degree};
+IntervalsF = cat(2,GetIntervals(F,steps),[1]);
 
-%Calculate inverses.
-for i = 1:degree
-    G{i} = finverse(F{i});
-end
+e1(x) = 2*x;
+e2(x) = 2*x-1;
 
-OneStepIntervals = [degree];
+E = {e1, e2};
 
-for i = 1:degree
-    OneStepIntervals(i) = G{i}(0);
-end
+IntervalsE = cat(2,GetIntervals(E,steps),[1]);
 
-IntervalAmount = 0;
-
-for i = 1:steps
-    IntervalAmount = IntervalAmount + degree^i;
-end
-
-Intervals = cat(2,OneStepIntervals, zeros(1,IntervalAmount-degree));
-
-row = 2;
-movementsInRow = 0;
-
-for index = (degree+1):IntervalAmount
-    nestedPoint = Intervals(LeftMostIndexOfRow(degree,row-1)+mod(movementsInRow,degree^(row-1)));
-
-    correspondingInverse = G{RootParent(degree,index,row)};
-
-    Intervals(index) = correspondingInverse(nestedPoint);
-
-    Point = [index, Intervals(index)];
-
-    movementsInRow = movementsInRow + 1;
-    
-    if movementsInRow >= degree^row 
-        movementsInRow = 0;
-        row = row +1;
-    end
-end
-
-Intervals
+plot(IntervalsF,IntervalsE,'-o');
 
