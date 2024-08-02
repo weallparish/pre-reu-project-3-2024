@@ -28,8 +28,13 @@ Intervals = cat(2,OneStepIntervals, zeros(1,IntervalAmount-degree));
 row = 2;
 movementsInRow = 0;
 
+leftmostIndices = steps;
+
+leftmostIndices(1) = 1;
+leftmostIndices(2) = degree + 1;
+
 for index = (degree+1):IntervalAmount
-    nestedPoint = Intervals(LeftMostIndexOfRow(degree,row-1)+mod(movementsInRow,degree^(row-1)));
+    nestedPoint = Intervals(leftmostIndices(row-1)+mod(movementsInRow,degree^(row-1)));
 
     correspondingInverse = G{RootParent(degree,index,row)};
 
@@ -40,9 +45,10 @@ for index = (degree+1):IntervalAmount
     if movementsInRow >= degree^row 
         movementsInRow = 0;
         row = row +1;
+        leftmostIndices(row) = index + 1;
     end
 end
 
-FinalIntervals = Intervals(floor(end/degree):end);
+FinalIntervals = Intervals(floor(end/degree):end)
 end
 
