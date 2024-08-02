@@ -27,11 +27,11 @@ index = I1_RowSize;
 while index < I_RowSize
     index = index+1
 
-    b = G{floor((index-I1_RowSize)+0.5/2)};
+    %b = G{floor((index-I1_RowSize)+0.5/2)};
 
-    a = b(I1(mod(index,2)+1))
+    %a = b(I1(mod(index,2)+1))
 
-    I(index) = a;
+    I(index) = 1 %a;
 end
 
 I
