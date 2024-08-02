@@ -49,6 +49,6 @@ for index = (degree+1):IntervalAmount
     end
 end
 
-FinalIntervals = Intervals(floor(end/degree):end)
+FinalIntervals = Intervals(floor(end/degree):end);
 end
 
