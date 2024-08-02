@@ -2,7 +2,7 @@ clc, clearvars, close all
 
 syms x;
 
-steps = 3;
+steps = 10;
 
 f1(x) = 2*x;
 f2(x) = 2*x-1;
@@ -35,13 +35,13 @@ row = 2;
 movementsInRow = 0;
 
 for index = (degree+1):IntervalAmount
-    nestedPoint = LeftMostIndexOfRow(degree,row-1)+mod(movementsInRow,degree^(row-1));
+    nestedPoint = Intervals(LeftMostIndexOfRow(degree,row-1)+mod(movementsInRow,degree^(row-1)));
 
-    correspondingInverse = G{RootParent(degree,index,row)}
+    correspondingInverse = G{RootParent(degree,index,row)};
 
     Intervals(index) = correspondingInverse(nestedPoint);
 
-    Point = [index, Intervals(index)]
+    Point = [index, Intervals(index)];
 
     movementsInRow = movementsInRow + 1;
     
