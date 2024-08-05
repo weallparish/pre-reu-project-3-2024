@@ -34,11 +34,16 @@ leftmostIndices(1) = 1;
 leftmostIndices(2) = degree + 1;
 
 for index = (degree+1):IntervalAmount
-    nestedPoint = Intervals(leftmostIndices(row-1)+mod(movementsInRow,degree^(row-1)));
-
-    correspondingInverse = G{RootParent(degree,index,row)};
-
-    Intervals(index) = correspondingInverse.Inverse(nestedPoint);
+    if mod(index,degree) == 1
+        Intervals(floor((index-1)/degree));
+        Intervals(index) = Intervals(floor((index-1)/degree));
+    else       
+        nestedPoint = Intervals(leftmostIndices(row-1)+mod(movementsInRow,degree^(row-1)));
+    
+        correspondingInverse = G{RootParent(degree,index,row)};
+    
+        Intervals(index) = correspondingInverse.Inverse(nestedPoint);
+    end
 
     movementsInRow = movementsInRow + 1;
     

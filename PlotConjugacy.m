@@ -9,7 +9,7 @@ IntervalsF = cat(2,GetIntervals(fPiecewise,fDomains,steps),1);
 
 IntervalsE = cat(2,GetIntervals(E,EDomains,steps),1);
 
-plot(IntervalsF,IntervalsE,'-o','MarkerSize',1);
+plot(IntervalsF,IntervalsE,'r-o','MarkerSize',2,'LineWidth',2);
 hold on;
 
 xlim([0,1]);
