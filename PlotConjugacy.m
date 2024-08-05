@@ -12,5 +12,8 @@ IntervalsE = cat(2,GetIntervals(E,EDomains,steps),1);
 plot(IntervalsF,IntervalsE,'-o','MarkerSize',1);
 hold on;
 
+xlim([0,1]);
+ylim([0,1]);
+
 end
 

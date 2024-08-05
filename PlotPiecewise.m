@@ -11,7 +11,7 @@ for i = 1:size(fPiecewise,2)
     f(x) = fPiecewise{i};
     ySpace = f(xSpace);
 
-    plot(xSpace, ySpace, "r-o",'MarkerSize',1);
+    plot(xSpace, ySpace, "b-o",'MarkerSize',1);
     hold on;
 end
 
