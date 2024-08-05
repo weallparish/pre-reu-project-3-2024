@@ -8,7 +8,7 @@ degree = size(fPiecewise,2);
 g(y) = y;
 GApprox = {degree};
 
-for i = 1:size(degree)
+for i = 1:degree
     g(y) = fPiecewise{i};
 
     ySpace = linspace(fDomains{i}(1),fDomains{i}(2),100);
