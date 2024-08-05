@@ -5,8 +5,11 @@ syms x;
 
 f(x) = x;
 
-for i = 1:size(fPiecewise,2)
-    xSpace = linspace(fDomains{i}(1),fDomains{i}(2),1000);
+totalPoints = 1000;
+fDegree = size(fPiecewise,2);
+
+for i = 1:fDegree
+    xSpace = linspace(fDomains{i}(1),fDomains{i}(2),totalPoints/fDegree);
 
     f(x) = fPiecewise{i};
     ySpace = f(xSpace);
