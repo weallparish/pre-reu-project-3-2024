@@ -6,7 +6,9 @@ steps = 3;
 
 epsilon = 1;
 
-f(x) = 2*x+epsilon*sin(2*pi*x);
+%f(x) = 2*x+epsilon*sin(2*pi*x);
+
+f(x) = 3*x;
 
 [fPiecewise, fDomains] = ConvertToPiecewise(f);
 
@@ -25,7 +27,7 @@ degreeF = size(fPiecewise,2);
 
 IntervalsF = cat(2,GetIntervals(fPiecewise,fDomains,steps),1);
 
-[E,EDomains] = ESubK(degreeF)
+[E,EDomains] = ESubK(degreeF);
 
 IntervalsE = cat(2,GetIntervals(E,EDomains,steps),1);
 

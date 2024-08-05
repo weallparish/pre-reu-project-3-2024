@@ -13,15 +13,15 @@ classdef InverseApproximation
             %   Detailed explanation goes here
             syms x;
             f(x) = func;
-            obj.xSpace = linspace(lowBound, upBound, 100);
+            obj.xSpace = linspace(lowBound, upBound, 1000);
             obj.ySpace = f(obj.xSpace);
         end
 
-        function approximation = calc(x)
+        function approximation = Inverse(obj, y)
             %METHOD1 Summary of this method goes here
             %   Detailed explanation goes here
-            %index = ySpace.find(x)
-            %approximation = xSpace(index);
+            index = find(abs(obj.ySpace-y) < 0.5,1);
+            approximation = obj.xSpace(index);
         end
     end
 end

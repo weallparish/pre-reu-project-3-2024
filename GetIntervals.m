@@ -5,12 +5,17 @@ syms x;
 
 degree = size(F,2);
 
-G = InverseApproximate(F,FDomains)
-
-OneStepIntervals = [degree];
+G = cell(1,degree);
 
 for i = 1:degree
-    OneStepIntervals(i) = G{i}(0);
+    FDomains{i}
+    G{i} = InverseApproximation(F{i},FDomains{i}(1),FDomains{i}(2));
+end
+
+OneStepIntervals = zeros(1,degree);
+
+for i = 1:degree
+    OneStepIntervals(i) = G{i}.Inverse(0);
 end
 
 IntervalAmount = 0;
@@ -34,7 +39,7 @@ for index = (degree+1):IntervalAmount
 
     correspondingInverse = G{RootParent(degree,index,row)};
 
-    Intervals(index) = correspondingInverse(nestedPoint);
+    Intervals(index) = correspondingInverse.Inverse(nestedPoint);
 
     movementsInRow = movementsInRow + 1;
     
