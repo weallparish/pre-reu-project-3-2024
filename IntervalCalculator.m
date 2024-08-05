@@ -4,9 +4,9 @@ syms x;
 
 steps = 8;
 
-epsilon = 0.3;
+epsilon = 0.1;
 
-f(x) = 2*x+epsilon*sin(2*pi*x);
+f(x) = 3*x+epsilon*sin(2*pi*x);
 
 %f(x) = 3*x;
 
