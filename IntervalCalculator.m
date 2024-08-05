@@ -6,7 +6,7 @@ steps = 3;
 
 epsilon = 1;
 
-f(x) = (2+epsilon)*x;
+f(x) = 2*x+epsilon*sin(2*pi*x);
 
 [fPiecewise, fDomains] = ConvertToPiecewise(f);
 
@@ -21,18 +21,13 @@ f(x) = (2+epsilon)*x;
 % hold on;
 % fplot(f2);
 
-F = fPiecewise
+degreeF = size(fPiecewise,2);
 
-degreeF = size(F,2);
+IntervalsF = cat(2,GetIntervals(fPiecewise,fDomains,steps),1);
 
-IntervalsF = cat(2,GetIntervals(F,steps),1)
+[E,EDomains] = ESubK(degreeF)
 
-e1(x) = 2*x;
-e2(x) = 2*x-1;
-
-E = ESubK(2);
-
-IntervalsE = cat(2,GetIntervals(E,steps),1)
+IntervalsE = cat(2,GetIntervals(E,EDomains,steps),1);
 
 plot(IntervalsF,IntervalsE,'-o','MarkerSize',1);
 

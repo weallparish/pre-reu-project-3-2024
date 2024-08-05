@@ -1,16 +1,11 @@
-function [FinalIntervals] = GetIntervals(F,steps)
+function [FinalIntervals] = GetIntervals(F,FDomains,steps)
 %GETINTERVALS Summary of this function goes here
 %   Detailed explanation goes here
 syms x;
 
 degree = size(F,2);
 
-G = {degree};
-
-%Calculate inverses.
-for i = 1:degree
-    G{i} = symfun(finverse(F{i}),x);
-end
+G = InverseApproximate(F,FDomains)
 
 OneStepIntervals = [degree];
 
@@ -50,6 +45,6 @@ for index = (degree+1):IntervalAmount
     end
 end
 
-FinalIntervals = Intervals(floor(end/degree):end)
+FinalIntervals = Intervals(floor(end/degree):end);
 end
 

@@ -20,7 +20,7 @@ while xValue <= (1+increment)
 
     if (yValue >= 1)
         fPiecewise{domainNumber} = f(x);
-        fDomains{domainNumber} = (lowerBound <= x & x < xValue);
+        fDomains{domainNumber} = ([lowerBound,xValue]);
 
         lowerBound = xValue;
         domainNumber = domainNumber + 1;
