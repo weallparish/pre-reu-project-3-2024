@@ -1,6 +1,7 @@
 function [FinalIntervals] = GetIntervals(F,steps)
 %GETINTERVALS Summary of this function goes here
 %   Detailed explanation goes here
+syms x;
 
 degree = size(F,2);
 
@@ -8,7 +9,7 @@ G = {degree};
 
 %Calculate inverses.
 for i = 1:degree
-    G{i} = finverse(F{i});
+    G{i} = symfun(finverse(F{i}),x);
 end
 
 OneStepIntervals = [degree];
@@ -49,6 +50,6 @@ for index = (degree+1):IntervalAmount
     end
 end
 
-FinalIntervals = Intervals(floor(end/degree):end);
+FinalIntervals = Intervals(floor(end/degree):end)
 end
 
