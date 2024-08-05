@@ -1,4 +1,4 @@
-function [index1, index2] = BinarySearch(ySpace, y)
+function [index] = BinarySearch(ySpace, y)
 %BINARYSEARCH Summary of this function goes here
 %   Detailed explanation goes here
 % Assume array passed in is sorted and non-zero
@@ -15,11 +15,5 @@ while left < right
     end
 end
 
-if (x == left)
-    index1 = left;
-    index2 = left;
-else
-    index1 = left;
-    index2 = left - 1;
-end
+index = left;
 end

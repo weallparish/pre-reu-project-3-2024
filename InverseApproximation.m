@@ -20,7 +20,7 @@ classdef InverseApproximation
         function approximation = Inverse(obj, y)
             %METHOD1 Summary of this method goes here
             %   Detailed explanation goes here
-            index = find(abs(obj.ySpace-y) < 0.5,1);
+            index = BinarySearch(obj.ySpace,y);
             approximation = obj.xSpace(index);
         end
     end

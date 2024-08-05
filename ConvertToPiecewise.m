@@ -12,8 +12,8 @@ xValue = 0;
 lowerBound = 0;
 domainNumber = 1;
 
-fPiecewise = {};
-fDomains = {};
+fPiecewise = cell(1);
+fDomains = cell(1);
 
 while xValue <= (1+increment)
     yValue = f(xValue);

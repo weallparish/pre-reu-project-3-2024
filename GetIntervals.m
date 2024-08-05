@@ -8,7 +8,6 @@ degree = size(F,2);
 G = cell(1,degree);
 
 for i = 1:degree
-    FDomains{i}
     G{i} = InverseApproximation(F{i},FDomains{i}(1),FDomains{i}(2));
 end
 
