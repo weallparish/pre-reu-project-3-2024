@@ -26,5 +26,10 @@ function [] = PlotConjugacy(fPiecewise,fDomains,steps)
     %Focus plot only on the domain/codomain [0,1)/[0,1)
     xlim([0,1]);
     ylim([0,1]);
+
+    %Labels plot
+    title("Conjugacy between {\itf} and {\itE_k}");
+    xlabel("End-point of coding interval for {\itf}");
+    ylabel("End-point of coding interval for {\itE_k}");
 end
 
