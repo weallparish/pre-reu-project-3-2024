@@ -1,15 +1,35 @@
 clc, clearvars, close all
-
 syms x;
 
-k = 4;
-epsilon = 0.1;
+%Conjugacy Graphing Program:
+%Graphs the conjugacy between an increasing, (piecewise) continous 
+%function f where f(0) = 0 and Ek, where Ek is of the same degree as f.
+%DOES NOT graph accurate conjugacies if any requirement isn't met.
 
-%f(x) = 2*x+epsilon*sin(2*pi*x);
+%Definition of f
 
-f(x) = k*x+0.1*sin(2*k*pi*x);
+preset = 1;
 
-[fPiecewise, fDomains] = ConvertToPiecewise(f);
+k = 2;
+p = 3;
 
+if preset == 1
+    %Linear piecewise function of degree 2
+
+    fPiecewise = {(2+p)*x,((2+p)*x-1)/(1+p)};
+    fDomains = {[0,1/(2+p)],[1/(2+p),1]};
+    
+elseif preset == 2
+    %Sin function of degree k
+    f(x) = k*x+p*sin(2*k*pi*x);
+    
+    [fPiecewise, fDomains] = ConvertToPiecewise(f);
+
+else
+    %Define a custom function here
+    f(x) = k*x;
+end
+
+%Plots of f and its conjugacy with Ek
 PlotPiecewise(fPiecewise,fDomains);
-PlotConjugacy(fPiecewise,fDomains,5);
+PlotConjugacy(fPiecewise,fDomains,6);
